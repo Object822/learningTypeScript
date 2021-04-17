@@ -1,1 +1,73 @@
-# tsTest
+# typeScript语法概况
+
+## 一、基础类型
+
+### 1.布尔值类型数据: 类型为boolean
+
+```typescript
+const bool: boolean = true
+```
+
+### 2.数字: 类型为number,还可以支持二级制和八进制字面能量
+
+```typescript
+const num: number = 1234
+const num1: number = 0xf00d
+```
+
+### 3.字符串: 类型为string
+
+```typescript
+const str: string = '1234asdf'
+```
+
+### 4.数组:有两种方式
+
+- 第一种是直接在元素类型后面接上[],用来表示由此类型组成的数组:
+
+```typescript
+const list1: number[] = [1,2,3]
+```
+
+- 第二种是使用数组泛型,Array[元素类型]:
+
+```typescript
+const list2: Array[number] = [1,23,4]
+```
+
+### 5.元祖Tuple: 元祖类型是指元素类型允许表示一个已知元素数量和类型的数组,各元素类型不必相同,比如可以定义一对值分别为string和number类型的元组
+
+```typescript
+const x: [string, number]
+x = ['hello', 12] // ok
+x = [10, 'nihao'] // Type 'number' is not assignable to type 'string'.
+// 当访问一个越界的
+```
+
+- 访问一个已知的索引的元素,会得到正确的类型:
+
+```typescript
+console.log(x[0].substr(1)) // ello 正确的打印
+console.log(x[1].substr[1]) // 错误的提示 Property 'substr' does not exist on type 'number'.
+```
+
+- 当访问一个越界的元素,会使用**联合**类型代替:
+
+```typescript
+x[3] = 'world' // ok 字符串会赋值给(string | number) 类型的
+console.log(x[5].toString()) // OK 以为string和nnumber都有toString()方法
+x[6] = true // error, 布尔类型不是(string | number)类型
+```
+
+
+
+## 二、变量声明
+
+## 三、接口
+
+## 四、类
+
+## 五、函数
+
+
+
